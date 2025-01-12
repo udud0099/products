@@ -8,13 +8,13 @@ export const GET = async () => {
 
   const productData = await Product.find();
   // get data from data base using GET method
-  return NextResponse.json({ result: productData });
+  return NextResponse.json({ result: productData, success: true });
 };
 
 export const POST = async (req) => {
   const payload = await req.json();
   await mongoose.connect(connectionString);
- 
+
   const productData = new Product(payload);
 
   const response = await productData.save();
